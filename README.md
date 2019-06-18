@@ -31,7 +31,7 @@ I've included **some** comments in the html syntax file that should help in edit
 
 ## Emmet
 
-Emmet is a package that can speed up writing code, and you can easily add your own abbrevations/snippets for it. When you write the keyword and press tab, Sublime's Emmet package will autocomplete to the corresponding code snippet. I've added the following abbrevations that I felt are useful:
+Emmet is a package that can speed up writing code, and you can easily add your own abbrevations/snippets for it. When you write the keyword and press tab, Sublime's Emmet package will autocomplete to the corresponding code snippet. Here is the few first I added(check the file to see all changes):
 
 * `datas` becomes `<span data-i18n=""></span>`
 * `char` becomes `<charmancer></charmancer>`
@@ -41,4 +41,4 @@ Emmet is a package that can speed up writing code, and you can easily add your o
 Reading the guide I made:
 * `data` becomes `data": "data-i18n=""` as a snippet, instead of an abbreviation, as the documentation suggested it behaved slightly differently
 
-I also added `rolltemplate` and `charmancer` as recognized `html` tags but it didn't seem to work.
+I also added `rolltemplate` and `charmancer` as recognized `html` tags and `data-i18n` can now autocomplete
