@@ -98,40 +98,62 @@
 
 
 	// Custom snippets definitions, as per https://github.com/emmetio/emmet/blob/master/snippets.json
+	// *******USAGE: By pressing the TAB key after you written the abbrevations/snippet, Emmet expands your expression to it's fullest
+	// by pressing tab again, you end up in the next relevant section of the expression. $1 $2 $3 dictates in which order you cycle through them and where you start
 	"snippets": {
 		 "html": {
 		 	"abbreviations": {
 		 		// Optimized versions of all common tags, with the mandatory parts filled in, and removing redundant things like ids
-		 		"select": "<select name=\"attr_\">",
-		 		"datas": "<span data-i18n=\"\"></span>",
-		 		"roll": "<rolltemplate class=\"sheet-rolltemplate-\"></rolltemplate>",
-		 		"char": "<charmancer></charmancer>",
-		 		"btn": "<button type=\"roll\" name=\"roll_\" value=\"\"></button>",
-		 		"attr": "<input type=\"text\" name=\"attr_\">",
-		 		"radio": "<input type=\"radio\" name=\"attr_\" value=\"\">",
-		 		"check": "<input type=\"checkbox\" name=\"attr_\" value=\"\">",
-		 		"textarea": "<textarea name=\"attr_\">",
-		 		"script": "<script type=\"text/worker\"></script>",
-		 		"fieldset": "<fieldset class=\"repeating_\"></fieldset>",
 
-		 		// shorthands for above functions
-		 		"dts":"datas",
-		 		"txt": "textarea",
-		 		"i:n": "<input type=\"number\" name=\"attr_\" value=\"\">",
+		 		// Inputs: numbers & text
+		 		"i:n": "<input type=\"number\" name=\"attr_$2\" value=\"$1\"/>",
+
+		 		"attr": "<input type=\"text\" name=\"attr_$1\"/>",
 		 		"i:t": "attr",
+		 		"textarea": "<textarea name=\"attr_$1\"/>",
+		 		"txt": "textarea",
+		 		// Inputs: Radio, checkbox, hidden
+		 		"radio": "<input type=\"radio\" name=\"attr_$2\" value=\"$1\"/>",
 		 		"i:r": "radio",
+		 		"check": "<input type=\"checkbox\" name=\"attr_$2\" value=\"$1\"/>",
 		 		"i:c": "check",
-		 		"i:h": "<input type=\"hidden\" name=\"attr_\" value=\"\">",
+		 		"i:h": "<input type=\"hidden\" name=\"attr_$2\" value=\"$1\"/>",
+
+		 		//buttons:
+		 		"btn": "<button type=\"roll\" name=\"roll_$2\" value=\"$1\">$3</button>",
+		 		"btnm": "<button type=\"roll\" name=\"roll_$2\" value=\"@{$1} \">$3</button>",
+
+
+		 		"select": "<select name=\"attr_$1\">",
+		 		"select+": "select>option*3", // creates a select with 3 options
+		 		
+		 		"datas": "<span data-i18n=\"\"></span>",
+				"dts":"datas",
+		 		
+		 		"fieldset": "<fieldset class=\"repeating_$2\">$1</fieldset>",
 		 		"field": "fieldset",
-		 		"select+": "select>option*3"
+		 		
+
+		 		//script, rollltemplate, charmancer
+		 		"script": "<script type=\"text/worker\"></script>",
+		 		"roll": "<rolltemplate class=\"sheet-rolltemplate-$1\">$2</rolltemplate>",
+		 		"char": "<charmancer class=\"$1\">$2</charmancer>",
 		 	},
-		 	// miscellanious shorthands that are not tags
+		 	// miscellanious shorthands that are not html tags
 		 	"snippets": {
-		 		"data": "data-i18n=\"\"",
-		 		"dt": "data",
+		 		// to quickly add complete attributes without having to type out the "true" that is otherwise left out from the autocomplete
+		 		"data": "data-i18n=\"$0\"",
 		 		"dis": "disabled=\"true\"",
 		 		"xed": "checked=\"true\"",
-		 		"func": "function(eventInfo)"
+
+		 		// common element in sheetworkers, could be nice shortcut
+		 		"func": "function(eventInfo)",
+		 		
+		 		// Roll20 macro syntax shortcuts
+		 		// these should enable to more smoothly write roll button macros
+		 		"@": "@{$1}",
+		 		"@s": "@{selected\\|$1}",
+		 		"temp": "&{template:default} {{name= $1}} {{attack= [[$2]]}} {{damage= [[$3]]}}",
 		 	}
 		 },
 
